@@ -31,6 +31,12 @@ This file defines the project-specific rules for creating and maintaining docume
 
 ## 📋 Markdown Structure
 
+### Language & Bilingual Support
+Always follow this structure for documentation in this repository:
+1. **English version first.**
+2. **German version second**, formatted in italics (*...*).
+3. **Headers** should be in the format 'English Title / German Title'.
+
 ### README.md Requirements
 
 * **H1 Title** with Project Name and Version.
@@ -115,8 +121,7 @@ When generating or editing files:
 * ✅ Use thematic emojis for scannability.
 * ✅ Include detailed comments in code blocks.
 * ✅ Use metadata blockquotes for file references.
+* ✅ Always prioritize bilingual support (English first, German italics second).
 * ✅ Always prioritize clarity for the end-user.
 
 ---
-
-Would you like me to generate a template for your `README.md` based on these rules?
