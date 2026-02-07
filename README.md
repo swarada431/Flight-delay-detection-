@@ -36,7 +36,7 @@ Es gibt zwei Versionen des Datensatzes:
 
 | Datei / File | Zeilen / Rows | Spalten / Columns | Größe / Size | Verwendung / Usage |
 |--------------|---------------|-------------------|--------------|-------------------|
-| `flight_data_2024.csv` | ~7 Millionen / ~7 million | 35 | ~1,31 GB | Vollständiger Datensatz / Full dataset |
+| `flight_data_2024.csv` | ~7 Millionen / ~7 million | 35 | ~1.31 GB | Vollständiger Datensatz / Full dataset |
 | `flight_data_2024_sample.csv` | 10.000 | 35 | ~10 MB | Beispieldatensatz für Entwicklung / Sample for development |
 
 ### 🔍 Wichtige Features / Key Features
