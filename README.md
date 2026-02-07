@@ -26,7 +26,7 @@ Dieses Projekt verwendet den **Flight Delay Dataset — 2024**, der auf Kaggle v
 
 *This project uses the **Flight Delay Dataset — 2024**, available on Kaggle.*
 
-🔗 **Kaggle Link:** [Flight Data 2024 Dataset](https://www.kaggle.com/datasets/hrishitpatil/flight-data-2024/data)
+> 🔗 **External Resource:** [Flight Data 2024 Dataset](https://www.kaggle.com/datasets/hrishitpatil/flight-data-2024/data)
 
 ### 📥 Download-Details / Download Details
 
