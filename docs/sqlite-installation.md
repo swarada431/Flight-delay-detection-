@@ -308,7 +308,7 @@ sqlite3 flights2024.db "PRAGMA integrity_check;"
 
 ## ⚠️ Important Notes / Wichtige Hinweise
 
-1. **Don't commit large .db files to Git** / *Große .db-Dateien nicht zu Git committen*
+1. **Don't commit large .db files to Git** / *Große .db-Dateien nicht zu Git hinzufügen*
    - Add to `.gitignore` / *Zur `.gitignore` hinzufügen*
    - Use DVC for data version control / *DVC für Daten-Versionskontrolle verwenden*
 
