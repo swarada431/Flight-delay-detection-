@@ -18,6 +18,49 @@ Das Projekt beinhaltet eine vollständige Machine Learning Pipeline:
 - *Model evaluation and performance analysis*
 - *Storing predictions in a SQLite database*
 
+## 📊 Datenquelle / Data Source
+
+### Flight Delay Dataset — 2024
+
+Dieses Projekt verwendet den **Flight Delay Dataset — 2024**, der auf Kaggle verfügbar ist.
+
+*This project uses the **Flight Delay Dataset — 2024**, available on Kaggle.*
+
+> 🔗 **External Resource:** [Flight Data 2024 Dataset](https://www.kaggle.com/datasets/hrishitpatil/flight-data-2024/data)
+
+### 📥 Download-Details / Download Details
+
+Es gibt zwei Versionen des Datensatzes:
+
+*There are two versions of the dataset:*
+
+| Datei / File | Zeilen / Rows | Spalten / Columns | Größe / Size | Verwendung / Usage |
+|--------------|---------------|-------------------|--------------|-------------------|
+| `flight_data_2024.csv` | ~7 Millionen / ~7 million | 35 | ~1.31 GB | Vollständiger Datensatz / Full dataset |
+| `flight_data_2024_sample.csv` | 10.000 | 35 | ~10 MB | Beispieldatensatz für Entwicklung / Sample for development |
+
+### 🔍 Wichtige Features / Key Features
+
+**Feature Engineering für Verspätungs-Ziel / Feature Engineering for Delay Target:**
+- `DepDel15`: Abflugverspätung > 15 Minuten / Departure delay > 15 minutes
+- `ArrDel15`: Ankunftsverspätung > 15 Minuten / Arrival delay > 15 minutes
+
+Diese Spalten können als Basis für die Erstellung der Zielvariable `Delayed` verwendet werden.
+
+*These columns can be used as the basis for creating the `Delayed` target variable.*
+
+### 📌 Ursprung / Original Source
+
+Die Daten stammen ursprünglich aus der **TranStats On-Time Performance-Datenbank** des US-Verkehrsministeriums (Bureau of Transportation Statistics - BTS).
+
+*The data originally comes from the **TranStats On-Time Performance database** of the U.S. Department of Transportation (Bureau of Transportation Statistics - BTS).*
+
+### 💾 SQLite-Datenbank / SQLite Database
+
+Da der vollständige Datensatz über 1 GB groß ist, werden die Vorhersagen in einer SQLite-Datenbank (`flights2024.db`) gespeichert. Dies optimiert die Performance bei Abfragen und ermöglicht effizientes Datenmanagement.
+
+*Since the full dataset is over 1 GB, predictions are stored in a SQLite database (`flights2024.db`). This optimizes query performance and enables efficient data management.*
+
 ## 📂 Projektstruktur / Project Structure
 
 ```
@@ -130,9 +173,9 @@ Flight-delay-detection-/
 *Deployment as Flask API or Streamlit dashboard*
 *Integration of additional data sources*
 
-## 👤 Autor / Author
+## 👤 Autoren / Authors
 
-**Andreas Traut**
+**Andreas Traut** & **Swarada Kulkarni**
 
 ## 📄 Lizenz / License
 
