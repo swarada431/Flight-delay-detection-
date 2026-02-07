@@ -60,6 +60,8 @@ Since the full dataset is over 1 GB, predictions are stored in a SQLite database
 
 *Da der vollständige Datensatz über 1 GB groß ist, werden die Vorhersagen in einer SQLite-Datenbank (`flights2024.db`) gespeichert. Dies optimiert die Performance bei Abfragen und ermöglicht effizientes Datenmanagement.*
 
+> 📖 **Installation Guide:** [SQLite Installation and Usage](docs/sqlite-installation.md)
+
 ## 📂 Project Structure / Projektstruktur
 
 ```
