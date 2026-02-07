@@ -1,89 +1,185 @@
-**✈️ Flight Delay Prediction (2024 Data)**
-This project builds a machine learning pipeline to predict whether a flight will be delayed or on-time using the 2024 U.S. flight dataset.
+# ✈️ Flight Delay Detection / Flugverspätungs-Erkennung
 
-The workflow includes:
-Data loading & preprocessing
-Feature engineering (creating a Delayed target variable)
-Training an XGBoost classifier
-Evaluating performance (accuracy, precision, recall, F1-score)
+Dieses Projekt nutzt Machine Learning zur Vorhersage von Flugverspätungen auf Basis von US-Flugdaten aus dem Jahr 2024.
 
-Saving predictions into a SQLite database
+*This project uses machine learning to predict flight delays based on 2024 U.S. flight data.*
 
-📂 Project Structure
+## 📋 Projektübersicht / Project Overview
 
-├── flight_data_2024.csv        # Raw dataset
+Das Projekt beinhaltet eine vollständige Machine Learning Pipeline:
+- Datenvorverarbeitung und Feature Engineering
+- Training eines XGBoost Klassifikators
+- Modell-Evaluation und Leistungsanalyse
+- Speicherung der Vorhersagen in einer SQLite-Datenbank
 
-├── flights2024.db              # SQLite database
+*The project includes a complete machine learning pipeline:*
+- *Data preprocessing and feature engineering*
+- *Training an XGBoost classifier*
+- *Model evaluation and performance analysis*
+- *Storing predictions in a SQLite database*
 
-├── notebook.ipynb              # Jupyter Notebook with full workflow
+## 📊 Datenquelle / Data Source
 
-├── README.md                   # Project documentation
+### Flight Delay Dataset — 2024
 
-⚙️ Steps in the Pipeline
-1. Data Loading & Target Creation
+Dieses Projekt verwendet den **Flight Delay Dataset — 2024**, der auf Kaggle verfügbar ist.
 
-Loaded flight_data_2024.csv using Pandas.
-Created a new binary column:
-Delayed = 1 if arr_delay > 15
-Delayed = 0 otherwise
-Stored cleaned data into a SQLite table (flights2024).
+*This project uses the **Flight Delay Dataset — 2024**, available on Kaggle.*
 
-2. Querying & Preprocessing
+> 🔗 **External Resource:** [Flight Data 2024 Dataset](https://www.kaggle.com/datasets/hrishitpatil/flight-data-2024/data)
 
-Queried non-cancelled and non-diverted flights.
-Encoded categorical columns (op_unique_carrier, origin, dest) using LabelEncoder.
-Scaled numeric features with StandardScaler.
-Split dataset into train/test (80/20).
+### 📥 Download-Details / Download Details
 
-3. Model Training
+Es gibt zwei Versionen des Datensatzes:
 
-Trained an XGBoost Classifier with:
-n_estimators=300
-max_depth=6
-learning_rate=0.05
-Evaluated with accuracy and classification report.
+*There are two versions of the dataset:*
 
-Results:
-Accuracy: ~93%
-Strong recall for on-time flights, moderate recall for delayed flights.
+| Datei / File | Zeilen / Rows | Spalten / Columns | Größe / Size | Verwendung / Usage |
+|--------------|---------------|-------------------|--------------|-------------------|
+| `flight_data_2024.csv` | ~7 Millionen / ~7 million | 35 | ~1.31 GB | Vollständiger Datensatz / Full dataset |
+| `flight_data_2024_sample.csv` | 10.000 | 35 | ~10 MB | Beispieldatensatz für Entwicklung / Sample for development |
 
-4. Predictions & Database Saving
-Generated predictions on the full dataset.
-Saved results into a new SQLite table: flight_preds_2024.
+### 🔍 Wichtige Features / Key Features
 
-📊 Model Performance (Test Set)
-Metric	On-Time (0)	Delayed (1)
-Precision	0.94	0.92
-Recall	0.98	0.73
-F1-Score	0.96	0.81
+**Feature Engineering für Verspätungs-Ziel / Feature Engineering for Delay Target:**
+- `DepDel15`: Abflugverspätung > 15 Minuten / Departure delay > 15 minutes
+- `ArrDel15`: Ankunftsverspätung > 15 Minuten / Arrival delay > 15 minutes
 
-Overall Accuracy: ✅ 93%
-🛠️ Tech Stack
-Python 3.13
-Pandas, NumPy
-Scikit-learn
-XGBoost
-SQLite (via SQLAlchemy)
+Diese Spalten können als Basis für die Erstellung der Zielvariable `Delayed` verwendet werden.
 
-🚀 How to Run
-Clone this repository:
-git clone https://github.com/swarada431/flight-delay-prediction.git
-cd flight-delay-prediction
+*These columns can be used as the basis for creating the `Delayed` target variable.*
 
+### 📌 Ursprung / Original Source
 
-Install dependencies:
+Die Daten stammen ursprünglich aus der **TranStats On-Time Performance-Datenbank** des US-Verkehrsministeriums (Bureau of Transportation Statistics - BTS).
 
-pip install -r requirements.txt
-Place the dataset (flight_data_2024.csv) in the project root.
+*The data originally comes from the **TranStats On-Time Performance database** of the U.S. Department of Transportation (Bureau of Transportation Statistics - BTS).*
 
+### 💾 SQLite-Datenbank / SQLite Database
 
-📌 Next Steps / Improvements
+Da der vollständige Datensatz über 1 GB groß ist, werden die Vorhersagen in einer SQLite-Datenbank (`flights2024.db`) gespeichert. Dies optimiert die Performance bei Abfragen und ermöglicht effizientes Datenmanagement.
 
-Hyperparameter tuning for better recall on delayed flights.
-Feature engineering with weather & airport congestion data.
-Deploy as a Flask API or Streamlit dashboard for real-time predictions.
+*Since the full dataset is over 1 GB, predictions are stored in a SQLite database (`flights2024.db`). This optimizes query performance and enables efficient data management.*
 
-👩‍💻 Author
-Swarada Kulkarni
-Data Analyst | Aspiring Data Scientist
+## 📂 Projektstruktur / Project Structure
+
+```
+Flight-delay-detection-/
+├── data/                                    # Datensätze / Datasets
+│   └── flight_data_2024.csv.dvc           # DVC-verwaltete Daten / DVC-managed data
+├── docs/                                    # Dokumentation / Documentation
+│   └── flight_delay_insights_2024.png     # Visualisierungen / Visualizations
+├── notebooks/                               # Jupyter Notebooks
+│   └── flight_delay_prediction_analytics.ipynb  # Hauptanalyse / Main analysis
+├── .gitignore                              # Git ignore Regeln / Git ignore rules
+├── README.md                               # Projektdokumentation / Project documentation
+└── requirements.txt                        # Python Abhängigkeiten / Python dependencies
+```
+
+## 🛠️ Technologie-Stack / Tech Stack
+
+- **Python 3.13**
+- **Pandas & NumPy** - Datenverarbeitung / Data processing
+- **Scikit-learn** - Preprocessing und Metriken / Preprocessing and metrics
+- **XGBoost** - Machine Learning Modell / Machine learning model
+- **SQLAlchemy** - Datenbankanbindung / Database integration
+- **Matplotlib & Seaborn** - Visualisierung / Visualization
+- **DVC** - Daten-Versionskontrolle / Data version control
+
+## ⚙️ Pipeline-Schritte / Pipeline Steps
+
+### 1. Datenaufbereitung / Data Preparation
+- Laden der Flugdaten aus `data/flight_data_2024.csv`
+- Erstellung der Zielvariable `Delayed` (1 wenn `arr_delay > 15`, sonst 0)
+- Speicherung in SQLite-Datenbank `flights2024.db`
+
+*Loading flight data from `data/flight_data_2024.csv`*
+*Creating target variable `Delayed` (1 if `arr_delay > 15`, otherwise 0)*
+*Storing in SQLite database `flights2024.db`*
+
+### 2. Preprocessing
+- Filterung: Nur nicht-stornierte und nicht-umgeleitete Flüge
+- Label-Encoding für kategoriale Variablen (`op_unique_carrier`, `origin`, `dest`)
+- StandardScaler für numerische Features
+- Train/Test Split (80/20)
+
+*Filtering: Only non-cancelled and non-diverted flights*
+*Label encoding for categorical variables*
+*StandardScaler for numeric features*
+*Train/test split (80/20)*
+
+### 3. Modell-Training / Model Training
+**XGBoost Classifier Hyperparameter:**
+- `n_estimators=300`
+- `max_depth=6`
+- `learning_rate=0.05`
+
+### 4. Vorhersagen / Predictions
+- Vorhersage auf dem gesamten Datensatz
+- Speicherung in SQLite-Tabelle `flight_preds_2024`
+
+*Prediction on full dataset*
+*Storage in SQLite table `flight_preds_2024`*
+
+## 📊 Modell-Performance / Model Performance
+
+| Metrik / Metric | Pünktlich / On-Time (0) | Verspätet / Delayed (1) |
+|-----------------|------------------------|------------------------|
+| Precision       | 0.94                   | 0.92                   |
+| Recall          | 0.98                   | 0.73                   |
+| F1-Score        | 0.96                   | 0.81                   |
+
+**Gesamtgenauigkeit / Overall Accuracy: ✅ 93%**
+
+## 🚀 Installation und Ausführung / Installation and Usage
+
+### Voraussetzungen / Prerequisites
+- Python 3.13 oder höher / or higher
+- Git
+- DVC (für Datenverwaltung / for data management)
+
+### Schritte / Steps
+
+1. **Repository klonen / Clone repository:**
+   ```bash
+   git clone https://github.com/AndreasTraut/Flight-delay-detection-.git
+   cd Flight-delay-detection-
+   ```
+
+2. **Abhängigkeiten installieren / Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Daten abrufen / Pull data (with DVC):**
+   ```bash
+   dvc pull
+   ```
+
+4. **Notebook ausführen / Run notebook:**
+   ```bash
+   jupyter notebook notebooks/flight_delay_prediction_analytics.ipynb
+   ```
+
+## 📌 Nächste Schritte / Next Steps
+
+- [ ] Hyperparameter-Tuning für besseren Recall bei verspäteten Flügen
+- [ ] Feature Engineering mit Wetter- und Flughafen-Auslastungsdaten
+- [ ] Deployment als Flask API oder Streamlit Dashboard
+- [ ] Integration zusätzlicher Datenquellen
+
+*Hyperparameter tuning for better recall on delayed flights*
+*Feature engineering with weather and airport congestion data*
+*Deployment as Flask API or Streamlit dashboard*
+*Integration of additional data sources*
+
+## 👤 Autoren / Authors
+
+**Andreas Traut** & **Swarada Kulkarni**
+
+## 📄 Lizenz / License
+
+Dieses Projekt steht unter der MIT-Lizenz.
+
+*This project is licensed under the MIT License.*
 
