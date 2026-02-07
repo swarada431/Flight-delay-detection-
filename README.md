@@ -173,9 +173,9 @@ Flight-delay-detection-/
 *Deployment as Flask API or Streamlit dashboard*
 *Integration of additional data sources*
 
-## 👤 Autor / Author
+## 👤 Autoren / Authors
 
-**Andreas Traut**
+**Andreas Traut** & **Swarada Kulkarni**
 
 ## 📄 Lizenz / License
 
